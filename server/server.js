@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 // Import the ApolloServer class
 const { ApolloServer } = require('@apollo/server');
@@ -8,6 +9,7 @@ const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 const PORT = process.env.PORT || 3001;
+const mongoUri = 'mongodb://localhost:27017/mydatabase';
 const server = new ApolloServer({
   typeDefs,
   resolvers,

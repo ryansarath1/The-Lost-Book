@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/googlebooks');
+const mongoURI = process.env.MONGO_URI || 'mongodb+srv://ryan:Winners123@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority';
 
-module.exports = mongoose.connection;
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
